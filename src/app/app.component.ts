@@ -3,7 +3,8 @@ import {
   FormControl,
   AbstractControl,
   ValidationErrors,
-  Validators
+  Validators,
+  FormGroup
 } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil, debounceTime } from 'rxjs/operators';
@@ -15,6 +16,10 @@ import { takeUntil, debounceTime } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject();
+
+  group = new FormGroup({
+    disabled: new FormControl({ value: null, disabled: true })
+  });
 
   blurControl = new FormControl(null, {
     validators: Validators.minLength(4),
@@ -33,6 +38,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.unsubscribe$.next();
+  }
+
+  submit(): void {
+    console.log('sumbitted');
   }
 }
 
