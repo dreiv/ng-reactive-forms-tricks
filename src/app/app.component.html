@@ -18,4 +18,5 @@
 <form [formGroup]="group" (ngSubmit)="submit()">
   <p>Disabled</p>
   <input type="text" formControlName="disabled" />
+  <button (click)="toggle($event)">Toggle</button>
 </form>

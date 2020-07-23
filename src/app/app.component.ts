@@ -54,6 +54,19 @@ export class AppComponent implements OnInit, OnDestroy {
     this.unsubscribe$.next();
   }
 
+  toggle(event: Event): void {
+    event.preventDefault();
+
+    const disabled = this.group.get('disabled');
+    const isDisabled = disabled?.disabled;
+
+    if (isDisabled) {
+      disabled?.enable({ emitEvent: false });
+    } else {
+      disabled?.disable({ emitEvent: true });
+    }
+  }
+
   submit(): void {
     console.log('sumbitted');
   }
