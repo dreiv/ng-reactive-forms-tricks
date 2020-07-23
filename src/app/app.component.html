@@ -2,3 +2,6 @@
 
 <p>Lazy validator</p>
 <input type="text" [formControl]="control" />
+<p class="error" *ngIf="!this.control.valid && this.control.touched">
+  Error!!!
+</p>

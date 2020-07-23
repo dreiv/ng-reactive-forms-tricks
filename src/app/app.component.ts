@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormControl, AbstractControl, ValidationErrors } from '@angular/forms';
+import {
+  FormControl,
+  AbstractControl,
+  ValidationErrors,
+  Validators
+} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +12,10 @@ import { FormControl, AbstractControl, ValidationErrors } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  control = new FormControl(null, dummyValidator);
+  control = new FormControl(null, {
+    validators: Validators.minLength(4),
+    updateOn: 'blur'
+  });
 }
 
 function dummyValidator(control: AbstractControl): ValidationErrors | null {
