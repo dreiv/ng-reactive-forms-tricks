@@ -1,7 +1,13 @@
 <h1>Reactive form tricks</h1>
 
+<p>Blur validator</p>
+<input type="text" [formControl]="blurControl" />
+<p class="error" *ngIf="!this.blurControl.valid && this.blurControl.touched">
+  Error, min length 4!
+</p>
+
 <p>Lazy validator</p>
-<input type="text" [formControl]="control" />
-<p class="error" *ngIf="!this.control.valid && this.control.touched">
-  Error!!!
+<input type="text" [formControl]="lazyControl" />
+<p class="error" *ngIf="!this.lazyControl.valid">
+  Error, min length 3!
 </p>
